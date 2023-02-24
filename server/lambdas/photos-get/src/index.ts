@@ -58,6 +58,8 @@ export const handler = async (
     return {
       statusCode: 200,
       headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, DELETE, *",
         "Content-Type": "text/html; charset=utf-8",
       },
       body: JSON.stringify(result),

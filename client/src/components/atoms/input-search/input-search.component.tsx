@@ -16,10 +16,8 @@ const InputSearch: React.FC<ImageProps> = ({ handleSearch }) => {
       onSubmit={(e) => {
         e.preventDefault();
 
-        // const formData = new FormData(e.target);
-        // const search = formData.get("search") ?? "";
-
-        const search = document.getElementById("search")?.value;
+        const search = (document.getElementById("search") as HTMLInputElement)
+          .value;
 
         handleSearch(search);
       }}

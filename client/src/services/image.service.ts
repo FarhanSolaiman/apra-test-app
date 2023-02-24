@@ -1,7 +1,7 @@
 import axios from "axios";
 import { IAlbumDataPayload, IAlbumsDataPayload, IImageDataPayload } from "src/types/image.type";
 
-const photosEndpoint = "https://3wewz5wnz7.execute-api.us-east-1.amazonaws.com/";
+const photosEndpoint = "https://s9dyi77y5b.execute-api.us-east-1.amazonaws.com/";
 const albumEndpoint = "https://i3upej9w77.execute-api.us-east-1.amazonaws.com/";
 const albumsEndpoint = "https://75yyeanegb.execute-api.us-east-1.amazonaws.com/";
 

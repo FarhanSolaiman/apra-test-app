@@ -74,7 +74,12 @@ const PhotosList: React.FC = () => {
             shape="rounded"
             onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
               setPage(
-                Number(event.target.innerHTML.replace(/<(?<=<).*$/gm, ""))
+                Number(
+                  (event.target as HTMLElement).innerHTML.replace(
+                    /<(?<=<).*$/gm,
+                    ""
+                  )
+                )
               );
             }}
           />
