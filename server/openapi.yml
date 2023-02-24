@@ -1,0 +1,146 @@
+openapi: 3.0.0
+components:
+  schemas:
+    ErrorResponse:
+      type: string
+    PhotosGetRequest:
+      type: object
+      properties:
+        title:
+          type: string
+    PhotosGetResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            photos:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                      id:
+                        type: integer
+                      title:
+                        type: string
+                      thumbnailUrl:
+                        type: string
+    AlbumGetResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            album:
+              type: object
+              properties:
+                id:
+                  type: string
+                photos:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          url:
+                            type: string
+                          id:
+                            type: integer
+                          title:
+                            type: string
+                          thumbnailUrl:
+                            type: string
+info:
+  title: APRA Test - Farhan
+  description: This is a collection for all API for this app
+  version: cd244f87-44b0-48ae-bf0c-bc957546ffaf
+paths:
+  /photos:
+    get:
+      operationId: PhotosGet
+      summary: Photos Get
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhotosGetRequest'
+        description: A photo information object
+      parameters:
+        - name: limit
+          in: query
+          description: number of photos shown
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: integer
+        - name: page
+          in: query
+          description: pagination based on limit
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Data cointaining all photos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhotosGetResponse'
+        '500':
+          description: An error when getting list of photos
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/album/{id}':
+    get:
+      operationId: AlbumGet
+      summary: Album Get
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhotosGetRequest'
+        description: A photo information object
+      parameters:
+        - name: id
+          in: path
+          description: The id of the album
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: number of album shown
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: integer
+        - name: page
+          in: query
+          description: pagination based on limit
+          required: false
+          allowEmptyValue: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Data cointaining the data of an album
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlbumGetResponse'
+        '500':
+          description: An error when getting list of album
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
