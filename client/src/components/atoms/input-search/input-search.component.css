@@ -1,0 +1,25 @@
+.inputSearchForm {
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+input.MuiInputBase-input {
+  text-align: center;
+}
+
+.inputSearchField {
+  font-family: "Inter", sans-serif !important;
+  margin-left: 1rem;
+  flex: 1;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.iconButton {
+  padding: 10;
+}

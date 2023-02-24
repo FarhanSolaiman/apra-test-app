@@ -1,18 +1,21 @@
 import axios from "axios";
+import { IAlbumDataPayload, IAlbumsDataPayload, IImageDataPayload } from "src/types/image.type";
 
-const endpoint = "https://graphqlzero.almansi.me/api";
+const photosEndpoint = "https://3wewz5wnz7.execute-api.us-east-1.amazonaws.com/";
+const albumEndpoint = "https://i3upej9w77.execute-api.us-east-1.amazonaws.com/";
+const albumsEndpoint = "https://75yyeanegb.execute-api.us-east-1.amazonaws.com/";
 
 const services = {
-  photosGET: async (limit: number, page: number, search?: string) => {
-    return axios.get(`${endpoint}/photos?limit=${limit}&page=${page}${search ? `&title=${search}`: ''}`);
+  photosGET: async (limit?: number, page?: number, search?: string) => {
+    return axios.get<IImageDataPayload, IImageDataPayload>(`${photosEndpoint}photos${limit || page || search ? '?' : ''}${limit ? `&limit=${limit}`: ''}${page ? `&page=${page}`:''}${search ? `&title=${search}`: ''}`);
   },
 
   albumGET: async (id: number, limit: number, page: number, search?: string) => {
-    return axios.get(`${endpoint}/album/${id}?limit=${limit}&page=${page}${search ? `&title=${search}`: ''}`);
+    return axios.get<IAlbumDataPayload, IAlbumDataPayload>(`${albumEndpoint}album/${id}?limit=${limit}&page=${page}${search ? `&title=${search}`: ''}`);
   },
 
   albumsGET: async () => {
-    return axios.get(`${endpoint}/album`);
+    return axios.get<IAlbumsDataPayload, IAlbumsDataPayload>(`${albumsEndpoint}albums`);
   },
 };
 

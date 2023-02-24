@@ -35,30 +35,37 @@ export const handler = async (
     }
   }
 
-  const client = new ApolloClient({
-    link: new HttpLink({ uri: "https://graphqlzero.almansi.me/api", fetch }),
-    cache: new InMemoryCache(),
-  });
-  const result = await client.query({
-    query: gql`
-        {
-            photos${options ? `(options: ${JSON.stringify(options).replace(/"/g, '').replace(/'/g, '"')})` : ""}{
-                data {
-                    id,
-                    title,
-                    url,
-                    thumbnailUrl,
-                }
-            }
-        }
-    `,
-  });
-
-  return {
-    statusCode: 200,
-    headers: {
-      "Content-Type": "text/html; charset=utf-8",
-    },
-    body: JSON.stringify(result),
-  };
+  try {
+    const client = new ApolloClient({
+      link: new HttpLink({ uri: "https://graphqlzero.almansi.me/api", fetch }),
+      cache: new InMemoryCache(),
+    });
+    const result = await client.query({
+      query: gql`
+          {
+              photos${options ? `(options: ${JSON.stringify(options).replace(/"/g, '').replace(/'/g, '"')})` : ""}{
+                  data {
+                      id,
+                      title,
+                      url,
+                      thumbnailUrl,
+                  }
+              }
+          }
+      `,
+    });
+  
+    return {
+      statusCode: 200,
+      headers: {
+        "Content-Type": "text/html; charset=utf-8",
+      },
+      body: JSON.stringify(result),
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: `There was a problem obtaining the photos data`
+    }
+  }
 };

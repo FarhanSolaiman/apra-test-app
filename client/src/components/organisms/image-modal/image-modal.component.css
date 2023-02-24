@@ -1,0 +1,9 @@
+.modalContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MuiBackdrop-root {
+  opacity: 0.3 !important;
+}
