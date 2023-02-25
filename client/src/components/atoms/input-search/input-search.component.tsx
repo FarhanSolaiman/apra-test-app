@@ -6,20 +6,21 @@ import SearchIcon from "@material-ui/icons/Search";
 import "./input-search.component.css";
 
 type ImageProps = {
-  handleSearch: (search: string) => void;
+  handleSearch: () => void;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const InputSearch: React.FC<ImageProps> = ({ handleSearch }) => {
+const InputSearch: React.FC<ImageProps> = ({ handleSearch, setSearch }) => {
   return (
     <Paper
       component="form"
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
 
         const search = (document.getElementById("search") as HTMLInputElement)
           .value;
-
-        handleSearch(search);
+        setSearch(search);
+        handleSearch();
       }}
       className="inputSearchForm"
     >

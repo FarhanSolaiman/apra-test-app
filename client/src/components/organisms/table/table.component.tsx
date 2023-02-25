@@ -47,6 +47,7 @@ const TableContent: React.FC<TableProps> = ({ data }) => {
                   <TableCell className="tableContent">{row.title}</TableCell>
                   <TableCell>
                     <img
+                      className="imageThumbnail"
                       src={row.thumbnailUrl}
                       alt={row.title}
                       onClick={() => {

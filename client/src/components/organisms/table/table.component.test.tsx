@@ -7,6 +7,9 @@ const imageListMock = {
     data: {
       photos: {
         data: Array(10).fill(null).map(ImageMock),
+        meta: {
+          totalCount: 10,
+        },
       },
     },
   },

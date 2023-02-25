@@ -49,6 +49,9 @@ export const handler = async (
                       title,
                       url,
                       thumbnailUrl,
+                  },
+                  meta {
+                    totalCount
                   }
               }
           }

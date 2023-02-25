@@ -32,7 +32,7 @@ const ImageModal: React.FC<childProps> = ({
       }}
     >
       <Fade in={open}>
-        <img src={select?.url} alt={select?.title} />
+        <img className="image" src={select?.url} alt={select?.title} />
       </Fade>
     </Modal>
   );

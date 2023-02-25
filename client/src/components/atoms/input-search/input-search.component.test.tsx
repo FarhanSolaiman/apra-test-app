@@ -7,7 +7,9 @@ describe("Input Search", () => {
   });
 
   it("should render search input", () => {
-    const wrapper = mount(<InputSearch handleSearch={jest.fn} />);
+    const wrapper = mount(
+      <InputSearch handleSearch={jest.fn} setSearch={jest.fn} />
+    );
     expect(wrapper).toBeTruthy();
   });
 });

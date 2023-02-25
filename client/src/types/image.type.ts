@@ -19,7 +19,10 @@ export interface IImageDataPayload {
   data: {
     data: {
       photos: {
-        data: Array<IImageData>
+        data: Array<IImageData>,
+        meta: {
+          totalCount: number
+        }
       }
     }
   }

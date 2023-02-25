@@ -26,3 +26,17 @@ nav.MuiPagination-root.paginate {
   padding: 0.4rem 0.2rem;
   border-radius: 0.3rem;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .imageThumbnail {
+    width: 90%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .imageThumbnail {
+    width: 90%;
+  }
+}
